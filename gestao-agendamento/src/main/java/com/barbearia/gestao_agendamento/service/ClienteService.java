@@ -48,4 +48,51 @@ public class ClienteService {
                 .map(cliente -> new ClienteResponseDTO(cliente))
                 .toList();
     }
+
+    public ClienteResponseDTO procurarPorCpf(String cpf){
+
+        Cliente cliente = clienteRepository
+                .findByCpf(cpf).orElseThrow(() -> new NoSuchElementException("Usuário não encontrado por CPF "+cpf));
+
+
+        return new ClienteResponseDTO(cliente);
+    }
+
+    public ClienteResponseDTO buscarPorEmail(String email){
+
+        Cliente cliente = clienteRepository.findByEmail(email)
+                .orElseThrow(() -> new NoSuchElementException("Usuário não encontrado pelo email: "+email));
+
+        return new ClienteResponseDTO(cliente);
+    }
+
+    public List<ClienteResponseDTO> procurarPorNome (String nome){
+
+        return clienteRepository.findByNomeContainingIgnoreCase(nome)
+                .stream()
+                .map(cliente -> new ClienteResponseDTO(cliente))
+                .toList();
+    }
+
+    public void deletarCliente(long id){
+
+        Cliente cliente = clienteRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Usuário não encontrado para o id "+ id));
+
+        clienteRepository.delete(cliente);
+    }
+
+    public ClienteResponseDTO atualizarCliente(Long id, ClienteRequestDTO clienteRequest){
+
+        Cliente clienteExistente = clienteRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Usuário não enconcrado para o id "+ id));
+
+        clienteExistente.setEmail(clienteRequest.email());
+        clienteExistente.setTelefone(clienteRequest.telefone());
+        clienteExistente.setNome(clienteRequest.nome());
+
+        Cliente clienteSalvo = clienteRepository.save(clienteExistente);
+
+        return new ClienteResponseDTO(clienteSalvo);
+    }
 }

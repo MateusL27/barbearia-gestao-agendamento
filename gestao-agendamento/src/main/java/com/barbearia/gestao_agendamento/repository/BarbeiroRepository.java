@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public interface BarbeiroRepository extends JpaRepository<Barbeiro, Long> {
 
+    public boolean existsByCpf(String cpf);
+
     public Optional<Barbeiro> findByCpf(String cpf);
 
     public List<Barbeiro> findByNomeContainingIgnoreCase(String nome);

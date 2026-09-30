@@ -1,5 +1,7 @@
 package com.barbearia.gestao_agendamento.dto.servico;
 
+import com.barbearia.gestao_agendamento.model.Servico;
+
 import java.math.BigDecimal;
 
 public record ServicoResponseDTO(
@@ -7,5 +9,11 @@ public record ServicoResponseDTO(
         String nome,
         BigDecimal preco,
         Integer duracao
+
+
 ){
+    public ServicoResponseDTO(Servico servico){
+        this(servico.getId(), servico.getNome(), servico.getPreco(), servico.getDuracao());
+
+    }
 }

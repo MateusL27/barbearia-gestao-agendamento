@@ -15,6 +15,6 @@ public record AgendamentoResponseDTO(
         StatusAgendamento statusAgendamento,
         ClienteResponseDTO cliente,
         BarbeiroResponseDTO barbeiro,
-        List<ServicoResponseDTO> servicosIdsç
+        List<ServicoResponseDTO> servicosIds
 ) {
 }

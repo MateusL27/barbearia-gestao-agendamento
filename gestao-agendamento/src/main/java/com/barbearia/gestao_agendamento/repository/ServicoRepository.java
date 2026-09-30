@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface ServicoRepository extends JpaRepository<Servico, Long> {
 
+    public boolean existsByNome(String nome);
+
     public List<Servico> findByNomeContainingIgnoreCase(String nome);
 }

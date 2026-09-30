@@ -1,5 +1,6 @@
 package com.barbearia.gestao_agendamento.model;
 
+import com.barbearia.gestao_agendamento.dto.barbeiro.BarbeiroRequestDTO;
 import jakarta.persistence.*;
 
 import java.time.LocalTime;
@@ -37,13 +38,21 @@ public class Barbeiro {
     public Barbeiro() {
     }
 
-    public Barbeiro(Long id, String nome, String cpf, Especialidade especialidade, LocalTime horarioInicioTrabalho, LocalTime horarioFimTrabalho) {
+    public Barbeiro(String nome, String cpf, Especialidade especialidade, LocalTime horarioInicioTrabalho, LocalTime horarioFimTrabalho) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.especialidade = especialidade;
         this.horarioInicioTrabalho = horarioInicioTrabalho;
         this.horarioFimTrabalho = horarioFimTrabalho;
+    }
+
+    public Barbeiro(BarbeiroRequestDTO requestDto){
+        this.nome = requestDto.nome();
+        this.cpf = requestDto.cpf();
+        this.especialidade = requestDto.especialidade();
+        this.horarioInicioTrabalho = requestDto.horarioInicioTrabalho();
+        this.horarioFimTrabalho = requestDto.horarioFimTrabalho();
     }
 
     public Long getId() {

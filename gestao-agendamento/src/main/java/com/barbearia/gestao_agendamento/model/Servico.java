@@ -1,5 +1,6 @@
 package com.barbearia.gestao_agendamento.model;
 
+import com.barbearia.gestao_agendamento.dto.servico.ServicoRequestDTO;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -34,6 +35,12 @@ public class Servico {
         this.nome = nome;
         this.preco = preco;
         this.duracao = duracao;
+    }
+
+    public Servico(ServicoRequestDTO servicoRequestDTO){
+        this.nome = servicoRequestDTO.nome();
+        this.preco = servicoRequestDTO.preco();
+        this.duracao = servicoRequestDTO.duracao();
     }
 
     public Long getId() {
