@@ -12,9 +12,10 @@ public record AgendamentoResponseDTO(
 
         Long id,
         LocalDateTime dataHora,
+        LocalDateTime dataHoraFim,
         StatusAgendamento statusAgendamento,
         ClienteResponseDTO cliente,
         BarbeiroResponseDTO barbeiro,
-        List<ServicoResponseDTO> servicosIds
+        List<ServicoResponseDTO> servicos
 ) {
 }

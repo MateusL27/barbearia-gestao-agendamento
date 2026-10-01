@@ -18,6 +18,9 @@ public class Agendamento {
     @Column(name = "data")
     private LocalDateTime dataHora;
 
+    @Column(name = "data_hora_fim")
+    private LocalDateTime dataHoraFim;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private StatusAgendamento statusAgendamento;
@@ -38,14 +41,15 @@ public class Agendamento {
     )
     private List<Servico> servicos = new ArrayList<>();
 
-    public Agendamento(){}
+    public Agendamento() {}
 
-    public Agendamento(Long id, LocalDateTime dataHora, Cliente cliente, StatusAgendamento statusAgendamento, Barbeiro barbeiro) {
-        this.id = id;
+    public Agendamento(LocalDateTime dataHora, LocalDateTime dataHoraFim, Cliente cliente, StatusAgendamento statusAgendamento, Barbeiro barbeiro, List<Servico> servicos) {
         this.dataHora = dataHora;
+        this.dataHoraFim = dataHoraFim;
         this.cliente = cliente;
         this.statusAgendamento = statusAgendamento;
         this.barbeiro = barbeiro;
+        this.servicos = servicos != null ? servicos : new ArrayList<>();
     }
 
     public Long getId() {
@@ -62,6 +66,14 @@ public class Agendamento {
 
     public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
+    }
+
+    public LocalDateTime getDataHoraFim() {
+        return dataHoraFim;
+    }
+
+    public void setDataHoraFim(LocalDateTime dataHoraFim) {
+        this.dataHoraFim = dataHoraFim;
     }
 
     public StatusAgendamento getStatusAgendamento() {
@@ -101,6 +113,7 @@ public class Agendamento {
         return "Agendamento{" +
                 "id=" + id +
                 ", dataHora=" + dataHora +
+                ", dataHoraFim=" + dataHoraFim +
                 ", statusAgendamento=" + statusAgendamento +
                 '}';
     }

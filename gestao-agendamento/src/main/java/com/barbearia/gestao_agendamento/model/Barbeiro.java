@@ -39,7 +39,6 @@ public class Barbeiro {
     }
 
     public Barbeiro(String nome, String cpf, Especialidade especialidade, LocalTime horarioInicioTrabalho, LocalTime horarioFimTrabalho) {
-        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.especialidade = especialidade;

@@ -30,8 +30,7 @@ public class Servico {
 
     public Servico(){}
 
-    public Servico(Long id, String nome, BigDecimal preco, Integer duracao) {
-        this.id = id;
+    public Servico(String nome, BigDecimal preco, Integer duracao) {
         this.nome = nome;
         this.preco = preco;
         this.duracao = duracao;
